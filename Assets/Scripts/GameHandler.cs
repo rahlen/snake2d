@@ -20,12 +20,10 @@ public class GameHandler : MonoBehaviour {
 
     private void Start() {
         Debug.Log("GameHandler.Start");
-        int number = 0;
-        FunctionPeriodic.Create(() => {
-            CMDebug.TextPopupMouse("Ding! " + number);
-            number++;
-
-        }, .3f);    
+       
+        //GameObject snakeHeadGameObject = new GameObject();
+        //SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
+        //snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
 
     
     }
