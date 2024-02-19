@@ -13,7 +13,7 @@ public class LevelGrid
     private int width;
     private int height;
     private Snake snake;
-
+    
     public LevelGrid(int width , int height)
     {
         this.width = width;
@@ -35,13 +35,18 @@ public class LevelGrid
         foodGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.foodSprite;
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y);
     }
-    public void SnakeMoved(Vector2Int SnakeGridPosition)
+    public bool TrySnakeEatFood(Vector2Int SnakeGridPosition)
     {
         if (SnakeGridPosition == foodGridPosition)
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
-            CMDebug.TextPopupMouse("Snake Ate Food");
+            return true;
+            //CMDebug.TextPopupMouse("Snake Ate Food");
+        }
+        else
+        {
+            return false;
         }
     }
 }

@@ -1,3 +1,4 @@
+using CodeMonkey.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Snake : MonoBehaviour
     private float gridMoveTimer;
     private float gridMoveTimerMax;
     private LevelGrid levelgrid;
+    private int snakebodysize;
+    private List<Vector2Int> snakeMovePositionList;
     // Start is called before the first frame update
 
     public void Setup(LevelGrid levelgrid)
@@ -19,9 +22,11 @@ public class Snake : MonoBehaviour
     private void Awake()
     {
         gridPosition = new Vector2Int(0, 0);
-        gridMoveTimerMax = 0.1f;
+        gridMoveTimerMax = 0.5f;
         gridMoveTimer = gridMoveTimerMax;
         gridMoveDirection = new Vector2Int(1, 0);
+        snakeMovePositionList = new List<Vector2Int>();
+        snakebodysize = 0;
     }
 
     // Update is called once per frame
@@ -74,11 +79,30 @@ public class Snake : MonoBehaviour
         if (gridMoveTimer >= gridMoveTimerMax)
         {
             gridMoveTimer -= gridMoveTimerMax;
+            snakeMovePositionList.Insert(0, gridPosition);
             gridPosition += gridMoveDirection;
+            bool snakeAteFood = levelgrid.TrySnakeEatFood(gridPosition);
+            if (snakeAteFood)
+            {
+                snakebodysize++;
+            }
+
+            if (snakeMovePositionList.Count >= snakebodysize + 1)
+            {
+                snakeMovePositionList.RemoveAt(snakeMovePositionList.Count - 1);
+            }
+            
+            for (int i = 0; i < snakeMovePositionList.Count; i++)
+            {
+                Vector2Int snakeMovePosition = snakeMovePositionList[i];
+                World_Sprite worldSprite = World_Sprite.Create(new Vector3(snakeMovePosition.x, snakeMovePosition.y), Vector3.one * .5f, Color.white);
+                FunctionTimer.Create(worldSprite.DestroySelf, gridMoveTimerMax);
+
+            }
             
             transform.position = new Vector3(gridPosition.x, gridPosition.y);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) -90 );
-            levelgrid.SnakeMoved(gridPosition);
+            
         }
     }
     private float GetAngleFromVector(Vector2Int dir)
