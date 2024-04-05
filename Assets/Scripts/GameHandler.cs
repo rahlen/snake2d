@@ -25,9 +25,9 @@ public class GameHandler : MonoBehaviour {
     
     Debug.Log("GameHandler.Start");
 
-        //GameObject snakeHeadGameObject = new GameObject();
-        //SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
-        //snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
+        GameObject snakeHeadGameObject = new GameObject();
+        SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
+        snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
 
         levelGrid = new LevelGrid(20, 20);
         snake.Setup(levelGrid);
