@@ -30,7 +30,7 @@ public class LevelGrid
         do
         {
             foodGridPosition = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
-        } while (snake.GetFullSnakePositionList().IndexOf (foodGridPosition) != -1 );
+        } while (snake.GetFullSnakeGridPositionList().IndexOf (foodGridPosition) != -1 );
         foodGameObject = new GameObject("Food", typeof(SpriteRenderer));
         foodGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.foodSprite;
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y);
@@ -41,6 +41,7 @@ public class LevelGrid
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
+            GameHandler.AddScore();
             return true;
             //CMDebug.TextPopupMouse("Snake Ate Food");
         }
@@ -48,5 +49,26 @@ public class LevelGrid
         {
             return false;
         }
+        
+    }
+    public Vector2Int ValidateGridPosition(Vector2Int gridPosition)
+    {
+        if (gridPosition.x < 0)
+        {
+            gridPosition.x = width - 1;
+        }
+        if (gridPosition.x > width -1)
+        {
+            gridPosition.x = 0;
+        }
+        if (gridPosition.y < 0)
+        {
+            gridPosition.y = height - 1;
+        }
+        if (gridPosition.y > height -1)
+        {
+            gridPosition.y = 0;
+        }
+        return gridPosition;
     }
 }
