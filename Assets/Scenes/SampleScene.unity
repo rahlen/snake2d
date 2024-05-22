@@ -358,6 +358,7 @@ MonoBehaviour:
   snakeHeadSprite: {fileID: 21300000, guid: 3e66e7dc2dd4a8e4d90203cc364ea890, type: 3}
   foodSprite: {fileID: 21300000, guid: 7ba73005020136f4ab145f1cc38c02d7, type: 3}
   snakeBodySprite: {fileID: 21300000, guid: 699ec0eb3513a9e4d9ec52b08a8544ba, type: 3}
+  snakeMove: {fileID: 8300000, guid: 76810dc5cd0831b4ca533b44ccfff67c, type: 3}
 --- !u!114 &657700109
 MonoBehaviour:
   m_ObjectHideFlags: 0

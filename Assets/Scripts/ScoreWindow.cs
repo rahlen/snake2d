@@ -10,12 +10,16 @@ public class ScoreWindow : MonoBehaviour
 
     private void Awake()
     {
+     
     scoreText = GameObject.Find("scoreText").GetComponent<TMP_Text>();
      //Debug.Log(scoreText);
     }
 
     private void Update()
     {
-    scoreText.text = GameHandler.GetScore().ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = GameHandler.GetScore().ToString();
+        }
     }
 }

@@ -106,10 +106,13 @@ public class Snake : MonoBehaviour
     }
     private void HandleGridMovement()
     {
+        
         gridMoveTimer += Time.deltaTime;
         if (gridMoveTimer >= gridMoveTimerMax)
         {
             gridMoveTimer -= gridMoveTimerMax;
+
+            Sounds.Playsound(Sounds.Sound.SnakeMove);
 
             SnakeMovePosition previousSnakeMovePosition = null;
             if ( snakeMovePositionList.Count > 0)
@@ -139,6 +142,7 @@ public class Snake : MonoBehaviour
             {
                 snakebodysize++;
                 CreateSnakeBody();
+                Sounds.Playsound(Sounds.Sound.SnakeEat);
             }
 
             if (snakeMovePositionList.Count >= snakebodysize + 1)
@@ -157,6 +161,7 @@ public class Snake : MonoBehaviour
                    // CMDebug.TextPopup("DEAD!", transform.position);
                     state = State.Dead;
                     GameHandler.SnakeDied();
+                    Sounds.Playsound(Sounds.Sound.SnakeDie);
                 }
             }
             
@@ -164,11 +169,11 @@ public class Snake : MonoBehaviour
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirectionVector) -90 );
+            
 
 
-           
-          
-                
+
+
         }
       
 
