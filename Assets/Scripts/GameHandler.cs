@@ -30,6 +30,9 @@ public class GameHandler : MonoBehaviour {
     {
         instance = this;
         InitializeStatic();
+        //PlayerPrefs.SetInt("Highscore", 100);
+        //PlayerPrefs.Save();
+        //Debug.Log(PlayerPrefs.GetInt("Highscore"));
     }
     private void Start() {
     
@@ -50,6 +53,7 @@ public class GameHandler : MonoBehaviour {
     }
     public static int GetScore()
     {
+        
         return score;
     }
 

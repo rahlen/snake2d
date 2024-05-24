@@ -20,6 +20,7 @@ public class ScoreWindow : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = GameHandler.GetScore().ToString();
+            
         }
     }
 }

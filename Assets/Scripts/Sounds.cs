@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Sounds
 {
-   public enum Sound
+    public enum Sound
     {
         SnakeMove,
         SnakeDie,
@@ -14,13 +14,13 @@ public static class Sounds
         ButtonOver,
 
     }
-    
+
     public static void Playsound(Sound Sound)
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(GetAudioClip(Sound));
-       
+
 
     }
 
@@ -28,17 +28,22 @@ public static class Sounds
     {
         foreach (GameAssets.SoundAudioClip soundAudioClip in GameAssets.i.soundAudioClipArray)
         {
-            if (soundAudioClip.Sound == sound)
+
             {
-                return soundAudioClip.AudioClip;
+                if (soundAudioClip.Sound == sound)
+                {
+                    return soundAudioClip.AudioClip;
+                }
+
             }
-
         }
-        Debug.LogError("Sound " + sound + "Not Found");
-        return null;
+                Debug.LogError("Sound " + sound + "Not Found");
+                return null;
+         
+
+
+
+
+
     }
-
-
-
-
 }

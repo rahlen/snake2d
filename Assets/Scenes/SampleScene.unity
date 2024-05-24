@@ -358,7 +358,17 @@ MonoBehaviour:
   snakeHeadSprite: {fileID: 21300000, guid: 3e66e7dc2dd4a8e4d90203cc364ea890, type: 3}
   foodSprite: {fileID: 21300000, guid: 7ba73005020136f4ab145f1cc38c02d7, type: 3}
   snakeBodySprite: {fileID: 21300000, guid: 699ec0eb3513a9e4d9ec52b08a8544ba, type: 3}
-  snakeMove: {fileID: 8300000, guid: 76810dc5cd0831b4ca533b44ccfff67c, type: 3}
+  soundAudioClipArray:
+  - Sound: 0
+    AudioClip: {fileID: 0}
+  - Sound: 2
+    AudioClip: {fileID: 8300000, guid: 658698f81e795904c8d4aa01a6b328b1, type: 3}
+  - Sound: 1
+    AudioClip: {fileID: 8300000, guid: 09d1d170c330ad346b16f688e5fce313, type: 3}
+  - Sound: 0
+    AudioClip: {fileID: 0}
+  - Sound: 0
+    AudioClip: {fileID: 0}
 --- !u!114 &657700109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,7 +824,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: '0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1097,6 +1109,7 @@ GameObject:
   - component: {fileID: 1651931424}
   - component: {fileID: 1651931423}
   - component: {fileID: 1651931425}
+  - component: {fileID: 1651931426}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -1142,6 +1155,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a5fef2e7d3fb5741bbae7f40b556224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1651931426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651931422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab602cd348fa1a94286764864e10ae9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1777456264
